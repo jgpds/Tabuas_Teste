@@ -15,4 +15,8 @@ class Tables:
         Method that effectively create and returns the data frame.
         """
         self.df = pd.DataFrame(0, index=np.arange(self.w), columns=self.columns)
+        self.df['x'] = self.df['x'].apply(lambda x: int(x))
+        for row in range(self.w+1):
+            self.df.at[row, 'x'] = row
+            row += 1
         return self.df
